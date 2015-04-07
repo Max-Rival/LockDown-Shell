@@ -8,7 +8,7 @@ char hostName[1024];
 int pipeFlag = 0;
 char pipeFile[1024];
 
-char * subString(char input[512], int start, int offset)
+char * subString(char input[512], unsigned int start, size_t offset)
 {
 	static char sub[512];
 	for(int i = 0;i<sizeof(sub)-1;i++)
@@ -398,6 +398,10 @@ int command_parser(char input[512])
 		{
 			hostName[i] = '\0';
 		}
+		if(input[5]=='\0')
+		{
+			return 9;
+		}
 		strcpy(hostName,subString(input,5,strlen(input)));
 		return 0;
 	}
@@ -452,6 +456,10 @@ void console()
 		if(i==8)
 		{
 			printf("PIPE successful!\n");
+		}
+		if(i==9)
+		{
+			printf("No session hostname specified.\n");
 		}
 	}
 	return;

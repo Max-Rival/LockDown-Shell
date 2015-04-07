@@ -1,0 +1,5 @@
+CHANGES:
+-Changed int start to unsigned int
+-Changed int offset to size_t offset
+-Added error 9 "No session hostname specified."
+-Updated the HOST command.
